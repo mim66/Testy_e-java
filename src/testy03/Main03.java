@@ -40,6 +40,9 @@ public class Main03 {
         //cw.Tekst_PiecImion();
         
         //Rzutowanie();
+        //cw.Rzutowanie_KodASCII();
+        //cw.Rzutowanie_TablicaASCII();
+        //cw.Rzutowanie_SlownikMatematyczny();
         Printf_Test();
         
         

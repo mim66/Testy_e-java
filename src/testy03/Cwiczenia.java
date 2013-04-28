@@ -278,4 +278,131 @@ public class Cwiczenia {
         System.out.println(wynik);    
     }
 
+        public void Rzutowanie_KodASCII(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj liczbę do zamiany na kod ASCII: ");
+        int liczba = scanner.nextInt();
+        System.out.println("Kod ASCII: " + ((char)liczba));
+    }
+    
+    public void Rzutowanie_TablicaASCII(){
+        //Scanner scanner = new Scanner(System.in);
+        //System.out.print("Podaj liczbę do zamiany na kod ASCII: ");
+        //int liczba = scanner.nextInt();
+        int liczba1,liczba2,liczba3,liczba4;
+        System.out.println("Liczba | Kod ASCII || Liczba | Kod ASCII  || Liczba | Kod ASCII  || Liczba | Kod ASCII");
+        for (int i=0;i<64;i++){
+            liczba1 = i;
+            liczba2 = 1*64+i;
+            liczba3 = 2*64+i;
+            liczba4 = 3*64+i;
+            System.out.println("   "+liczba1+ " |  "+ (char)liczba1+" ||   "+liczba2+ " |  "+ (char)liczba2+" ||   "+liczba3+ " |  "+ (char)liczba3+" ||   "+liczba4+ " |  "+ (char)liczba4);
+        }
+    }
+
+    public void Rzutowanie_SlownikMatematyczny(){
+        Scanner scanner = new Scanner(System.in);
+        String[][] tablica = {   {"0", "zero"}
+                                ,{"1", "jeden"}
+                                ,{"2", "dwa"}
+                                ,{"3", "trzy"}
+                                ,{"4", "cztery"}
+                                ,{"5", "pięć"}
+                                ,{"6", "sześć"}
+                                ,{"7", "siedem"}
+                                ,{"8", "osiem"}
+                                ,{"9", "dziewięć"}
+                                ,{"10","dziesięć"}
+                                ,{"11","jedenaście"}
+                                ,{"12","dwanaście"}
+                                ,{"13","trzynaście"}
+                                ,{"14","czternaście"}
+                                ,{"15","piętnaście"}
+                                ,{"16","szesnaście"}
+                                ,{"17","siedemnaście"}
+                                ,{"18","osiemnaście"}
+                                ,{"19","dziewiętnaście"}
+                                ,{"20","dwadzieścia"}
+                                ,{"30","trzydzieści"}
+                                ,{"40","czterdzieści"}
+                                ,{"50","pięćdziesiąt"}
+                                ,{"60","sześćdziesiąt"}
+                                ,{"70","siedemdziesiąt"}
+                                ,{"80","osiemdziesiąt"}
+                                ,{"90","dziewsięćdziesiąt"}
+                                ,{"100","sto"}
+                                ,{"200","dwieście"}
+                                ,{"300","trzysta"}
+                                ,{"400","czterysta"}
+                                ,{"500","pięćset"}
+                                ,{"600","sześćset"}
+                                ,{"700","siedemset"}
+                                ,{"800","osiemset"}
+                                ,{"900","dziewsięćset"}
+                                ,{"100","sto"}
+                                ,{"200","dwieście"}
+                                ,{"300","trzysta"}
+                                ,{"400","czterysta"}
+                                ,{"500","pięćset"}
+                                ,{"600","sześćset"}
+                                ,{"700","siedemset"}
+                                ,{"800","osiemset"}
+                                ,{"900","dziewięćset"}
+                                ,{"1000","tysiąc"}
+                                ,{"2000","dwa tysiące"}
+                                ,{"3000","trzy tysiące"}
+                                ,{"4000","cztery tysiące"}
+                                ,{"5000","pięć tysięcy"}
+                                ,{"6000","sześć tysięcy"}
+                                ,{"7000","siedem tysięcy"}
+                                ,{"8000","osiem tysięcy"}
+                                ,{"9000","dziewięć tysięcy"}
+        };
+        String wynik = "";
+        System.out.print("Podaj liczbę: ");
+        int liczba = scanner.nextInt();
+        int liczPomoc  = 0;
+        String pomoc = "";
+        
+        for (int i = 0; i < 1000; i++) {
+            if (((i>=0 && i<20) && i==liczba)){
+                wynik = tablica[i][1];
+                break;
+            }
+            else if (i>=20 && i<1000 && i==liczba) {
+                if (i>=100){
+                    //część setna np. z 189 -> 1
+                    pomoc       = Integer.toString(i).substring(0,Integer.toString(i).length()-2) + "00";
+                    liczPomoc   = Integer.parseInt(pomoc);
+                    for (int j=27; j<tablica.length; j++) {
+                        if (liczPomoc == Integer.parseInt(tablica[j][0])) {
+                            wynik += " "+ tablica[j][1];
+                            break;
+                        }
+                    }
+                }
+                //część dziesiętna np z 89 -> 8
+                pomoc       = Integer.toString(i).substring(Integer.toString(i).length()-2,Integer.toString(i).length()-1) + "0";
+                liczPomoc   = Integer.parseInt(pomoc);
+                for (int j=20; j<tablica.length; j++) {
+                    if (liczPomoc == Integer.parseInt(tablica[j][0])) {
+                        wynik += " "+ tablica[j][1];
+                        break;
+                    }
+                }
+                //część jednostkowa np z 89 -> 9
+                pomoc       = Integer.toString(i).substring(Integer.toString(i).length()-1,Integer.toString(i).length());
+                liczPomoc   = Integer.parseInt(pomoc);
+                for (int j=1; j<tablica.length; j++) {
+                    if (liczPomoc == Integer.parseInt(tablica[j][0])) {
+                        break;
+                    }
+                }
+            }
+        }
+        if (liczba>=1000)
+            wynik = "Oszukujesz...";
+        System.out.println("Liczba słownie: " + wynik);
+    }
+
 }
