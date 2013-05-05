@@ -7,6 +7,7 @@ package testy03;
 //import java.io.UnsupportedEncodingException;
 //import java.net.URLDecoder;
 //import java.net.URLEncoder;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -408,12 +409,29 @@ public class Cwiczenia {
     public void PrintF_HistoriaPrzelewow(){
         int[] historia = new int[100];
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Wybierz opcję: \n  1 - Pokaż historię\n  2 - Dodaj transakcję\n  3 - Wyjście.");
-        int wybor = scanner.nextInt();
-        if (wybor == 1){
-            System.out.printf("Historia Przelewow:\n");
-            for (int i=0;i<(historia.length-1);i++){
-                System.out.printf("Numer: %d; Wpłata: %d;\n", i, historia[i]);
+        //pytanie o 100 elementów
+        for (int j = 0; j < 100; j++) {
+            System.out.println("Wybierz opcję: \n  1 - Pokaż historię\n  2 - Dodaj transakcję\n  3 - Wyjście.");
+            int wynik = 0;
+            int wybor = scanner.nextInt();
+            if (wybor == 1){
+                System.out.printf("Historia Przelewow:\n");
+                for (int i=0;i<historia.length;i++){
+                    //if (Integer.toString(historia[i]) != null) {  
+                    if (historia[i] != 0) {  
+                        System.out.printf("Numer: %d; Wpłata: %d;\n", i, historia[i]);
+                    }
+                }
+            }
+            else if (wybor == 2){
+                System.out.print("Podaj liczbę: ");
+                int liczba = scanner.nextInt();
+                for (int i=0;i<historia.length;i++){
+                    if (historia[i] == 0){
+                        historia[i] = liczba;
+                    }
+                }
+
             }
         }
             
