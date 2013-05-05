@@ -278,7 +278,7 @@ public class Cwiczenia {
         System.out.println(wynik);    
     }
 
-        public void Rzutowanie_KodASCII(){
+    public void Rzutowanie_KodASCII(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj liczbę do zamiany na kod ASCII: ");
         int liczba = scanner.nextInt();
@@ -403,6 +403,21 @@ public class Cwiczenia {
         if (liczba>=1000)
             wynik = "Oszukujesz...";
         System.out.println("Liczba słownie: " + wynik);
+    }
+
+    public void PrintF_HistoriaPrzelewow(){
+        int[] historia = new int[100];
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Wybierz opcję: \n  1 - Pokaż historię\n  2 - Dodaj transakcję\n  3 - Wyjście.");
+        int wybor = scanner.nextInt();
+        if (wybor == 1){
+            System.out.printf("Historia Przelewow:");
+            for (int i=0;i<(historia.length-1);i++){
+                System.out.printf(
+            }
+        }
+            
+        
     }
 
 }
