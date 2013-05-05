@@ -43,7 +43,8 @@ public class Main03 {
         //cw.Rzutowanie_KodASCII();
         //cw.Rzutowanie_TablicaASCII();
         //cw.Rzutowanie_SlownikMatematyczny();
-        Printf_Test();
+        //Printf_Test();
+        cw.PrintF_HistoriaPrzelewow();
         
         
     }
