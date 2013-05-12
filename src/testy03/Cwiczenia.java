@@ -411,7 +411,7 @@ public class Cwiczenia {
         Scanner scanner = new Scanner(System.in);
         //pytanie o 100 elementów
         for (int j = 0; j < 100; j++) {
-            System.out.println("Wybierz opcję: \n  1 - Pokaż historię\n  2 - Dodaj transakcję\n  3 - Wyjście.");
+            System.out.printf("%d: Wybierz opcję:  1 - Pokaż historię;  2 - Dodaj transakcję;  3 - Wyjście.\n", j+1);
             int wynik = 0;
             int wybor = scanner.nextInt();
             if (wybor == 1){
@@ -419,9 +419,10 @@ public class Cwiczenia {
                 for (int i=0;i<historia.length;i++){
                     //if (Integer.toString(historia[i]) != null) {  
                     if (historia[i] != 0) {  
-                        System.out.printf("Numer: %d; Wpłata: %d;\n", i, historia[i]);
+                        System.out.printf("Numer: %d; Wpłata: %d;\n", i+1, historia[i]);
                     }
                 }
+                System.out.println("");
             }
             else if (wybor == 2){
                 System.out.print("Podaj liczbę: ");
@@ -429,13 +430,13 @@ public class Cwiczenia {
                 for (int i=0;i<historia.length;i++){
                     if (historia[i] == 0){
                         historia[i] = liczba;
+                        break;
                     }
                 }
 
             }
+            else 
+                break;
         }
-            
-        
     }
-
 }
