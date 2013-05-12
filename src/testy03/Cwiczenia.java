@@ -7,6 +7,7 @@ package testy03;
 //import java.io.UnsupportedEncodingException;
 //import java.net.URLDecoder;
 //import java.net.URLEncoder;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -407,8 +408,11 @@ public class Cwiczenia {
     }
 
     public void PrintF_HistoriaPrzelewow(){
-        int[] historia = new int[100];
-        Scanner scanner = new Scanner(System.in);
+        int[]    histWplat = new int[100];
+        String[] histOpis  = new String[100];
+        Date[]   histDat   = new Date[100];
+        Scanner scanner    = new Scanner(System.in);
+        Scanner scanOpis   = new Scanner(System.in);
         //pytanie o 100 elementów
         for (int j = 0; j < 100; j++) {
             System.out.printf("%d: Wybierz opcję:  1 - Pokaż historię;  2 - Dodaj transakcję;  3 - Wyjście.\n", j+1);
@@ -416,24 +420,28 @@ public class Cwiczenia {
             int wybor = scanner.nextInt();
             if (wybor == 1){
                 System.out.printf("Historia Przelewow:\n");
-                for (int i=0;i<historia.length;i++){
-                    //if (Integer.toString(historia[i]) != null) {  
-                    if (historia[i] != 0) {  
-                        System.out.printf("Numer: %d; Wpłata: %d;\n", i+1, historia[i]);
+                for (int i=0;i<histWplat.length;i++){
+                    //if (Integer.toString(histWplat[i]) != null) {  
+                    if (histWplat[i] != 0) {  
+                        System.out.printf("Numer: %d; Wpłata,Data,Opis: %d; %tF; %s\n", i+1, histWplat[i], histDat[i], histOpis[i]);
                     }
                 }
                 System.out.println("");
             }
             else if (wybor == 2){
                 System.out.print("Podaj liczbę: ");
-                int liczba = scanner.nextInt();
-                for (int i=0;i<historia.length;i++){
-                    if (historia[i] == 0){
-                        historia[i] = liczba;
+                int liczba  = scanner.nextInt();
+                System.out.print("Podaj opis: ");
+                String opis = scanOpis.next();
+                Date data = new Date();
+                for (int i=0;i<histWplat.length;i++){
+                    if (histWplat[i] == 0){
+                        histWplat[i] = liczba;
+                        histDat[i]   = data;
+                        histOpis[i]  = opis;
                         break;
                     }
                 }
-
             }
             else 
                 break;
