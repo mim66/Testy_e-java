@@ -44,9 +44,10 @@ public class Main03 {
         //cw.Rzutowanie_TablicaASCII();
         //cw.Rzutowanie_SlownikMatematyczny();
         //Printf_Test();
-        cw.PrintF_HistoriaPrzelewow();
-        
-        
+        //cw.PrintF_HistoriaPrzelewow();
+        //cw.T31_CiagCyfr();
+        //cw.T31_NWD();
+        cw.T31_10Imion();
     }
 
     public static void OdczytDanychZKlawiatury(){

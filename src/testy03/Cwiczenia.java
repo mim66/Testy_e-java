@@ -8,7 +8,7 @@ package testy03;
 //import java.net.URLDecoder;
 //import java.net.URLEncoder;
 import java.util.Date;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -190,13 +190,6 @@ public class Cwiczenia {
         int w = 0,t = 0;
         String wynik = "";
         Scanner scanner = new Scanner(System.in);
-        
-//        System.out.println("Proszę o podanie 5 imion - bez znaczenia, żeńskich czy męskich... ");
-//        for(int i=0;i<5;i++){
-//            //pobieranie danych od użytkownika
-//            System.out.print("Podaj imię: ");
-//            imiona[i] = scanner.next();
-//        }
         
         for(int i=0;i<imiona.length;i++){
             if (imiona[i].endsWith("a")){
@@ -447,4 +440,122 @@ public class Cwiczenia {
                 break;
         }
     }
+    
+    
+    /* Napisz program, który pobiera od użytkownika dwie liczby, 
+     * a następnie wypisuje ciąg cyfr od tej mniejszej do większej. 
+     * Przykład: użytkownik podaje 11 i 16. Program wyświetla: 11, 12, 13, 14, 15, 16.
+     */
+    public void T31_CiagCyfr(){
+        Scanner scanner    = new Scanner(System.in);
+        System.out.printf("Wpisz pierwszą mniejszą a drugą większą liczbę:\n");
+        int licz1 = scanner.nextInt();
+        int licz2 = scanner.nextInt();
+        int mala = licz1>licz2 ? licz2: licz1;
+        int duza = licz1>licz2 ? licz1: licz2;
+        String liczby = "";
+        
+        for (int i = mala; i < (duza+1); i++) {
+            liczby += i+",";
+        }
+        System.out.printf("Liczby od mniejszej do większej: \n%s", liczby);
+    }
+
+    /*
+     * Napisz program, ktory pobiera od użytkownika dwie liczby, a następnie sprawdza ich największy wspólny dzielnik (NWD). Algorytm możesz wymyślić sam lub znaleźć w internecie.
+     */
+    public void T31_NWD(){
+        long a;
+        long b;
+        System.out.print("Podaj pierwszą liczbę: ");
+        Scanner la = new Scanner(System.in);
+        a = la.nextLong();
+        System.out.print("Podaj drugą liczbę: ");
+        Scanner lb = new Scanner(System.in);
+        b = lb.nextLong();
+        while (a != b) {
+            if (a > b) {
+                 a = a - b;
+            } else {
+                 b = b - a;
+            }
+        }
+        System.out.println("NWD podanych liczb wynosi " + a);     
+    }
+
+    /*
+     * Napisz program, który pobiera od użytkownika 10 imion, następnie wyświetla je w kolejności alfabetycznej.
+     */
+    public void T31_10Imion(){
+        char[] alfabet = {  'A','Ą','a','B','b','C','Ć','c','D','d','E','Ę','e','F','f','G','g','H','h','I','i','J','j','K','k','L','l'
+             ,'Ł','ł','M','m','N','Ń','n','O','Ó','o','P','p','q','R','r','S','Ś','s','T','t','U','u','v','W','w','x','Y','y','Z','Ź','Ż','z'};
+        //String[] imiona = new String[10];
+        String[] imiona = {"Anetka","Smerfetka","Viola","Mariola","Daria","Anielka"
+                ,"Magda","Hermiona","Natalia","Ofelia"};
+        char[] imie1, imie2;
+        int poz1, poz2, dl, dl1, dl2 = 0;
+        System.out.print("Podaj 10 imion: ");
+//        Scanner scanner = new Scanner(System.in);
+//        for (int i = 0; i < 10; i++) {
+//            imiona[i] = scanner.next();
+//        }
+//        scanner.close();
+            
+        for (int i = 0; i < 10; i++) {
+            if (i>1){
+                imie1 = imiona[i-1].toCharArray();
+                imie2 = imiona[i].toCharArray();
+                dl1 = imiona[i-1].length();
+                dl2 = imiona[i].length();
+                dl  =  dl1> dl2 ? dl1: dl2;
+                poz1 = poz2 = 0;
+                for (int j = 0; j <= dl; j++) {
+                    for (int a = 0; a < alfabet.length; a++) {
+                        //zabezpiezenie przed przekroczeniem zakresu
+                        if (dl1<=dl) {
+                            if (alfabet[a] == imie1[j])     poz1 = a;
+                        }
+                        if (dl2<=dl) {
+                            if (alfabet[a] == imie2[j])     poz2 = a;
+                        }
+                    }
+                    //zmień indeksy imion 
+                    if (poz1>poz2){
+                        String str1 = imiona[i-1];
+                        String str2 = imiona[i];
+                        imiona[i-1] = str2;                         
+                        imiona[i]   = str1;                         
+                    }
+                }
+            }
+        }
+        String wynik = "";
+        for (String imie : imiona) {
+            wynik += imie;
+        }
+        System.out.println("POsortowane imiona to: " + wynik);     
+    }
+
+    /*
+     * Zrefaktoryzuj program z ćwiczenia trzeciego tak, aby w przypadku wystąpienia tego samego imienia poprosił użytkownika o inne.
+     */
+
+    
+    /*
+     * Średnie
+
+    Znajdź w internecie trzy algorytmy szyfrujące dane i napisz program, który je wykorzystuje.
+    Napisz program, ktory pobiera od użytkownika dwie liczby, a następnie wypisuje tabliczkę mnożenia opierając się na przedziale podanych wartości liczbowych. Przykład: użytkownik podaje 5 i 15 – program wyświetla tabliczkę mnożenia od 5 (5 x 1, 5 x 2, etc.) do 15.
+    Napisz program, który pobiera od użytkownika cztery daty w formacie DD.MM.RRRR (dzień.miesiąc.rok), segreguje jest w kolejności rosnącej a następnie generuje dla każdej z nich pesel (ostatnie 5 cyfr dowolne)
+    Napisz program, który daje użytkownikowi możliwość wyboru jednej z (co najmniej) pięciu figur geometrycznych, następnie pobiera od niego dane wyłącznie potrzebne do obliczenia pola i objętości. Ogranicz instrukcje warunkowe do minimum. Program ma wyświetlać wynik w przyjaznej dla człowieka formie – grupować cyfry, stosować przecinek jako separator dziesiętny.
+
+Trudne
+
+    Napisz program taki sam jak w ćwiczeniu 4 poziomu średniego z tą różnicą, że użytkownik nie musi stosować kropki jako separator dziesiętny, a może użyć przecinek.
+    Napisz program, który pobiera od użytkownika pięć dat w formie DD.MM.YYYY, następnie segreguje je w kolejności rosnącej podając w nawiasie liczbę dni do dnia dzisiejszego.
+    Stwórz program, który operuje na bardzo dużych liczbach skracając je. Przykład: gdy użytkownik podaje liczbę 12 643 324 – program wyświetla: “12M 643K 324″.
+    Napisz konwerter liczb rzymskich na dziesiętne. Jeśli czujesz się na siłach: również z dziesiętnych na rzymskie.
+
+     */
+    
 }
