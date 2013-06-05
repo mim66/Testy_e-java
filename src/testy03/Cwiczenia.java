@@ -191,6 +191,13 @@ public class Cwiczenia {
         String wynik = "";
         Scanner scanner = new Scanner(System.in);
         
+//        System.out.println("Proszę o podanie 5 imion - bez znaczenia, żeńskich czy męskich... ");
+//        for(int i=0;i<5;i++){
+//            //pobieranie danych od użytkownika
+//            System.out.print("Podaj imię: ");
+//            imiona[i] = scanner.next();
+//        }
+        
         for(int i=0;i<imiona.length;i++){
             if (imiona[i].endsWith("a")){
                 imionaZenskie[w] = imiona[i];
